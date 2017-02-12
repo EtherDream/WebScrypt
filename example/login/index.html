@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<title>弱口令保护 Demo</title>
+ 	<meta charset='utf-8' />
+ 	<link rel="stylesheet" href="main.css" type="text/css">
+</head>
+
+<body>
+<fieldset>
+	<legend>登录框</legend>
+	<div>
+		账号: <input id="txtUsr" type="text" value="alice">
+	</div>
+	<div>
+		密码: <input id="txtPwd" type="text" value="" maxlength="6">
+	</div>
+	<button id="btnLogin" disabled>登录</button>
+	<div>
+		<div id="progBox">
+			<div id="progBar"></div>
+		</div>
+		<div id="txtState"></div>
+	</div>
+	<div id="txtUserInfo"></div>
+</fieldset>
+<pre>
+挑战账号：
+  alice（密码是 2 位数字）
+  bob  （密码是 4 位数字）
+  root （密码是 6 位数字）
+
+挑战奖励：
+  登录成功可获得红包，难度越大奖励越高。
+  红包数量有限。过期时间为一天。（最后更新：2017-2-12 13:40:00）
+
+测试账号：
+  test/test
+
+后端程序：
+  后端的程序和数据都是公开的，<a href="https://github.com/EtherDream/WebScrypt/tree/master/example/login">点此查看</a>。本站带宽很小，请勿在线撞库测试。
+</pre>
+
+<script>
+	if (!window.console) {
+		console = {log: function() {}}
+	}
+</script>
+<script src="//cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+<script src="../../release/scrypt.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

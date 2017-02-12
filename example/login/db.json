@@ -1,0 +1,26 @@
+{
+	"test": {
+		"s_salt": "049655f8",
+		"s_hash": "6089ddb4374d9a0850c8680f2cbca69107fd40ee488b22eba89ad6b9fe6e54fc",
+		"pub_info": "登录成功会在此显示一些隐私信息。刷新页面继续挑战吧",
+		"sec_info": ""
+	},
+	"alice": {
+		"s_salt": "d91674b4",
+		"s_hash": "99f30ac0bff705b71216688139f62c5faf48be5ce323bc057216181b942b34c6",
+		"pub_info": "这个密码简单吧~ 赏你一点微小的奖励（支付宝口令红包 %s）",
+		"sec_info": "d5fc6b99c1ea85c5"
+	},
+	"bob": {
+		"s_salt": "ad9dae56",
+		"s_hash": "cb1c306e6ea7d58b1eadc9bd02e5e455c9c28a2b8486d9cfb0a2d6e47839a472",
+		"pub_info": "不错，这都被你试出来啦:) 来领取红包 %s",
+		"sec_info": "a5d184818072065f"
+	},
+	"root": {
+		"s_salt": "83d9179c",
+		"s_hash": "fd72f8401773cef7929cf59d4188d43010afa580d91acd78d219e6c8031aa34f",
+		"pub_info": "太厉害了！奖励你个大红包 %s",
+		"sec_info": "7c7bb965a973b74e"
+	}
+}

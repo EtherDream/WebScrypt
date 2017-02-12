@@ -1,0 +1,18 @@
+#progBox {
+	width: 200px; height: 8px;
+	overflow: hidden;
+	margin-top: 10px;
+	background-color: #eee;
+	border: #000 1px solid;
+}
+#progBar {
+	height: 100%; width: 0;
+	background-color: #333;
+}
+#txtState {
+	font-size: 14px;
+	margin-top: 10px;
+}
+#txtUserInfo {
+	color: blue;
+}

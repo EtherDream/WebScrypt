@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<title>webscrypt</title>
+	<meta charset='utf-8' />
+	<link rel="stylesheet" href="main.css" type="text/css">
+	<script>
+		if (location.hash == '#dev') {
+			document.write('<script src="../../src/main/debug/scrypt.js"><\/script>');
+		} else {
+			document.write('<script src="../../release/scrypt.js"><\/script>');
+		}
+	</script>
+</head>
+<body>
+	<h1>Scrypt Hash Function</h1>
+	<fieldset>
+		<legend>Input</legend>
+		<div class="column">
+			<div>
+				Pass: <input id="txtPass" type="text" value="hello1234">
+				<input id="chkHexPass" type="checkbox"><label for="chkHexPass">Hex</label>
+			</div>
+			<div>
+				Salt: <input id="txtSalt" type="text" value="jack@gmail.com">
+				<input id="chkHexSalt" type="checkbox"><label for="chkHexSalt">Hex</label>
+			</div>
+			<div>
+				dkLen: <input id="txtDkLen" type="number" value="32" min="1">
+			</div>
+		</div>
+		<div class="column params">
+			<div>
+				N: 2^<input id="txtLog2N" type="number" value="20" min="1">
+			</div>
+			<div>
+				r: <input id="txtArgR" type="number" value="1" min="1">
+			</div>
+			<div>
+				P: <input id="txtArgP" type="number" value="4" min="1">
+			</div>
+			<div>
+				Thread: <input id="txtThread" type="number" value="2" min="1">
+			</div>
+		</div>
+		<div class="column">
+			<div>
+				API: 
+				<select id="optMod">
+					<option value="auto" selected>Auto</option>
+					<option value="asmjs">asm.js</option>
+					<option value="flash">Flash</option>
+				<select>
+			</div>
+		</div>
+		<ul>
+			<li>
+				Time Cost: <em>O(N * r * P / thread)</em>
+			</li>
+			<li>
+				Memory Cost: <em>N * r * 128 * thread</em>
+				= <em id="txtMemCost"></em>
+			</li>
+		</ul>
+		<div>
+			<button id="btnHash" disabled>Hash</button>
+			<button id="btnStop" disabled>Stop</button>
+		</div>
+		<div>
+			<div id="progBox">
+				<div id="progBar"></div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Output</legend>
+		<div id="txtLog"></div>
+		<div>
+			<button id="btnCls">Clear</button>
+		</div>
+	</fieldset>
+
+	<script src="//cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>

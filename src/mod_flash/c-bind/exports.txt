@@ -1,0 +1,5 @@
+# built in symbols that must always be preserved
+malloc
+free
+memcpy
+memmove

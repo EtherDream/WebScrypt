@@ -1,0 +1,13 @@
+{
+    "files": [
+        "lib/smix.js",
+        "lib/pbkdf2.js",
+        "src/WorkerMain.ts"
+    ],
+    "compilerOptions": {
+        "allowJs": true,
+        "out": "debug/asmjs.js",
+        "sourceMap": true,
+        "inlineSources": true
+    }
+}

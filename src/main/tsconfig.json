@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "out": "debug/scrypt.js",
+        "sourceMap": true,
+        "inlineSources": true
+    }
+}
