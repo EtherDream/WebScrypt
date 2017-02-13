@@ -117,7 +117,7 @@ module Scrypt {
         }
         mState = STATE.RUNNING;
 
-        // length check
+        // check length
         if (pass.length > mMaxPassLen) {
             throw Error('pass.length > maxPassLen');
         }
@@ -221,26 +221,23 @@ module Scrypt {
             throw Error('config() takes at least 1 argument');
         }
 
-        let N = param['N'];
+        let N = param['N'] | 0;
         if (! (1 < N && N <= CONST.MAX_N)) {
             throw Error(`param N out of range (1 < N <= 2^23)`);
         }
         if (N & (N - 1)) {
             throw Error('param N must be power of 2');
         }
-        N |= 0;
 
-        let r = param['r'];
+        let r = param['r'] | 0;
         if (! (0 < r && r < 256)) {
             throw Error('param r out of range (0 < r < 256)');
         }
-        r |= 0;
 
-        let P = param['P'];
+        let P = param['P'] | 0;
         if (! (0 < P && P < 256)) {
             throw Error('param P out of range (0 < P < 256)');
         }
-        P |= 0;
 
         let memCost = N * r * 128;
         if (memCost > CONST.MAX_MEM) {
@@ -278,10 +275,10 @@ module Scrypt {
             }
 
             if (!test) {
-                mMaxPassLen = maxPassLen;
-                mMaxSaltLen = maxSaltLen;
-                mMaxDkLen = maxDkLen;
-                mMaxThread = maxThread;
+                mMaxPassLen = maxPassLen | 0;
+                mMaxSaltLen = maxSaltLen | 0;
+                mMaxDkLen = maxDkLen | 0;
+                mMaxThread = maxThread | 0;
             }
         }
 

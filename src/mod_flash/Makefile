@@ -32,7 +32,7 @@ lib: lib/scrypt.swc
 
 
 .PHONY: pthread_test
-pthread:
+pthread_test:
 	$(FLASCC)/usr/bin/gcc \
 		../c/scrypt.c ../c/pbkdf2.c ../c/smix.c \
 		-flto-api=c-bind/pthread-exports.txt \

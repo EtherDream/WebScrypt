@@ -78,10 +78,6 @@ module ModFlash {
         return swf;
     }
 
-    function toNum(s) {
-        return +s.match(/\d+\.\d+/);
-    }
-
 
     const R_VER = /\d+\.\d+/;
 
@@ -114,7 +110,7 @@ module ModFlash {
         } catch (err) {
             return;
         }
-        return +ver.match(/\d+\.\d+/);
+        return +ver.match(R_VER);
     }
 
     function getVer() : number {

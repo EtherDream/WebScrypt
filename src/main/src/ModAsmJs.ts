@@ -36,7 +36,7 @@ module ModAsmJs {
         thread: number,
         maxPassLen: number, maxSaltLen: number, maxDkLen: number
     ) {
-        mAsmMod['config'].apply(this, arguments);
+        mAsmMod.config.apply(this, arguments);
     }
     
     export function stop() {
