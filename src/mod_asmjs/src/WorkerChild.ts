@@ -96,7 +96,7 @@ const Child = function() {
     }
 
     function advance() {
-        let stp = mProgStep
+        let stp = mProgStep;
         let beg = mProgPos;
         let end = beg + stp;
         let last = 0;
@@ -145,8 +145,6 @@ const Child = function() {
             }, [output]);
             break;
         }
-
-        // console.log('iter:', stp, 'time:', t, 'first:', mFirstStage);
     }
 
 
