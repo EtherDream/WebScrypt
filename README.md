@@ -45,6 +45,8 @@ scrypt 是一种密码学 Hash 函数，专门用于处理口令。
 
 * [前端 Hash 能否对抗不安全的通信](doc/client-hash-via-insecure-network/README.md)
 
+* [「安全输入框插件」能否有效地保护输入数据](doc/security-plugin-protect-input/README.md)
+
 
 ## 更新中
 
