@@ -41,7 +41,7 @@ scrypt 是一种密码学 Hash 函数，专门用于处理口令。
 * [使用文档](doc/api.md)
 
 
-* 为何不用 argon2
+## 为何不用 argon2
 
 2015 年 P-H-C 的胜出者 [argon2](https://github.com/P-H-C/phc-winner-argon2)，是目前最新的口令 Hash 函数。OWASP 在 [Password Storage Cheat Sheet](https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet) 中，也推荐开发者首先选择该算法。
 
