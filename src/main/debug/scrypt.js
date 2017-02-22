@@ -10,7 +10,7 @@ var Util;
         return _Uint8Array ? new _Uint8Array(buf) : buf;
     }
     function hexToBytes(inStr) {
-        var outLen = inStr.length >> 1;
+        var outLen = inStr.length / 2;
         var outBuf = allocBuf(outLen);
         for (var i = 0; i < outLen; i++) {
             var byte = parseInt(inStr.substr(i * 2, 2), 16);
@@ -104,7 +104,7 @@ var ModAsmJs;
     }
     ModAsmJs.hash = hash;
     function config(N, r, P, thread, maxPassLen, maxSaltLen, maxDkLen) {
-        mAsmMod['config'].apply(this, arguments);
+        mAsmMod.config.apply(this, arguments);
     }
     ModAsmJs.config = config;
     function stop() {
@@ -318,7 +318,7 @@ var Scrypt;
             throw Error('scrypt is running');
         }
         mState = 5 /* RUNNING */;
-        // length check
+        // check length
         if (pass.length > mMaxPassLen) {
             throw Error('pass.length > maxPassLen');
         }
@@ -411,24 +411,21 @@ var Scrypt;
         if (!param) {
             throw Error('config() takes at least 1 argument');
         }
-        var N = param['N'];
+        var N = param['N'] | 0;
         if (!(1 < N && N <= 8388608 /* MAX_N */)) {
             throw Error("param N out of range (1 < N <= 2^23)");
         }
         if (N & (N - 1)) {
             throw Error('param N must be power of 2');
         }
-        N |= 0;
-        var r = param['r'];
+        var r = param['r'] | 0;
         if (!(0 < r && r < 256)) {
             throw Error('param r out of range (0 < r < 256)');
         }
-        r |= 0;
-        var P = param['P'];
+        var P = param['P'] | 0;
         if (!(0 < P && P < 256)) {
             throw Error('param P out of range (0 < P < 256)');
         }
-        P |= 0;
         var memCost = N * r * 128;
         if (memCost > 1073741824 /* MAX_MEM */) {
             throw Error('memory limit exceeded (N * r * 128 > 1G)');
@@ -464,10 +461,10 @@ var Scrypt;
                 throw Error('invalid maxThread');
             }
             if (!test) {
-                mMaxPassLen = maxPassLen;
-                mMaxSaltLen = maxSaltLen;
-                mMaxDkLen = maxDkLen;
-                mMaxThread = maxThread;
+                mMaxPassLen = maxPassLen | 0;
+                mMaxSaltLen = maxSaltLen | 0;
+                mMaxDkLen = maxDkLen | 0;
+                mMaxThread = maxThread | 0;
             }
         }
         // test param
@@ -489,7 +486,7 @@ var Scrypt;
     }
     Scrypt.binToStr = binToStr;
     function hexToBin(hex) {
-        if (hex.length & 1) {
+        if (hex.length % 2) {
             throw Error('invalid hex length');
         }
         return Util.hexToBytes(hex);

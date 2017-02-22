@@ -1,86 +1,89 @@
 <!doctype html>
 <html>
 <head>
-	<title>webscrypt</title>
-	<meta charset='utf-8' />
-	<link rel="stylesheet" href="main.css" type="text/css">
-	<script>
-		if (location.hash == '#dev') {
-			document.write('<script src="../../src/main/debug/scrypt.js"><\/script>');
-		} else {
-			document.write('<script src="../../release/scrypt.js"><\/script>');
-		}
-	</script>
+  <title>webscrypt</title>
+  <meta charset='utf-8' />
+  <link rel="stylesheet" href="main.css" type="text/css">
+  <script>
+    if (location.hash == '#dev') {
+      document.write('<script src="../../src/main/debug/scrypt.js"><\/script>');
+    } else {
+      document.write('<script src="../../release/scrypt.js"><\/script>');
+    }
+  </script>
 </head>
 <body>
-	<h1>Scrypt Hash Function</h1>
-	<fieldset>
-		<legend>Input</legend>
-		<div class="column">
-			<div>
-				Pass: <input id="txtPass" type="text" value="hello1234">
-				<input id="chkHexPass" type="checkbox"><label for="chkHexPass">Hex</label>
-			</div>
-			<div>
-				Salt: <input id="txtSalt" type="text" value="jack@gmail.com">
-				<input id="chkHexSalt" type="checkbox"><label for="chkHexSalt">Hex</label>
-			</div>
-			<div>
-				dkLen: <input id="txtDkLen" type="number" value="32" min="1">
-			</div>
-		</div>
-		<div class="column params">
-			<div>
-				N: 2^<input id="txtLog2N" type="number" value="20" min="1">
-			</div>
-			<div>
-				r: <input id="txtArgR" type="number" value="1" min="1">
-			</div>
-			<div>
-				P: <input id="txtArgP" type="number" value="4" min="1">
-			</div>
-			<div>
-				Thread: <input id="txtThread" type="number" value="2" min="1">
-			</div>
-		</div>
-		<div class="column">
-			<div>
-				API: 
-				<select id="optMod">
-					<option value="auto" selected>Auto</option>
-					<option value="asmjs">asm.js</option>
-					<option value="flash">Flash</option>
-				<select>
-			</div>
-		</div>
-		<ul>
-			<li>
-				Time Cost: <em>O(N * r * P / thread)</em>
-			</li>
-			<li>
-				Memory Cost: <em>N * r * 128 * thread</em>
-				= <em id="txtMemCost"></em>
-			</li>
-		</ul>
-		<div>
-			<button id="btnHash" disabled>Hash</button>
-			<button id="btnStop" disabled>Stop</button>
-		</div>
-		<div>
-			<div id="progBox">
-				<div id="progBar"></div>
-			</div>
-		</div>
-	</fieldset>
-	<fieldset>
-		<legend>Output</legend>
-		<div id="txtLog"></div>
-		<div>
-			<button id="btnCls">Clear</button>
-		</div>
-	</fieldset>
+  <h1>Scrypt Hash Function</h1>
+  <fieldset>
+    <legend>Input</legend>
+    <div class="column">
+      <div>
+        Pass: <input id="txtPass" type="text" value="hello1234">
+        <input id="chkHexPass" type="checkbox"><label for="chkHexPass">Hex</label>
+      </div>
+      <div>
+        Salt: <input id="txtSalt" type="text" value="jack@gmail.com">
+        <input id="chkHexSalt" type="checkbox"><label for="chkHexSalt">Hex</label>
+      </div>
+      <div>
+        dkLen: <input id="txtDkLen" type="number" value="32" min="1">
+      </div>
+    </div>
+    <div class="column params">
+      <div>
+        N: 2^<input id="txtLog2N" type="number" value="20" min="1">
+      </div>
+      <div>
+        r: <input id="txtArgR" type="number" value="1" min="1">
+      </div>
+      <div>
+        P: <input id="txtArgP" type="number" value="4" min="1">
+      </div>
+      <div>
+        Thread: <input id="txtThread" type="number" value="2" min="1">
+      </div>
+    </div>
+    <div class="column">
+      <div>
+        API: 
+        <select id="optMod">
+          <option value="auto" selected>Auto</option>
+          <option value="asmjs">asm.js</option>
+          <option value="flash">Flash</option>
+        <select>
+      </div>
+    </div>
+    <ul>
+      <li>
+        Time Cost: <em>O(N * r * P / thread)</em>
+      </li>
+      <li>
+        Memory Cost: <em>N * r * 128 * thread</em>
+        = <em id="txtMemCost"></em>
+      </li>
+    </ul>
+    <div>
+      <button id="btnHash" disabled>Hash</button>
+      <button id="btnStop" disabled>Stop</button>
+    </div>
+    <div>
+      <div id="progBox">
+        <div id="progBar"></div>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Output</legend>
+    <div id="txtLog"></div>
+    <div>
+      <button id="btnCls">Clear</button>
+    </div>
+  </fieldset>
 
-	<script src="//cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
-	<script src="main.js"></script>
+  <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+  <script src="main.js"></script>
+
+
+  <a href="https://github.com/EtherDream/webscrypt"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
 </body>
 </html>

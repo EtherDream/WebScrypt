@@ -13,6 +13,8 @@ scrypt 是一种密码学 Hash 函数，专门用于处理口令。
 
 另外 scrypt 支持`并发维度`，可充分利用多线程提高工作量，使破解难度成倍增加。
 
+[详细讲解](https://www.cnblogs.com/index-html/p/hardware-resistant-hash-algorithm.html)
+
 
 ## 前端计算
 
@@ -26,7 +28,7 @@ scrypt 是一种密码学 Hash 函数，专门用于处理口令。
 
 ![](../../raw/master/doc/clienthash2.png)
 
-使用这种方案，既能减轻服务端的计算压力，又可获得高强度的安全。（[详细](https://www.cnblogs.com/index-html/p/frontend_kdf.html)）
+使用这种方案，既能减轻服务端的计算压力，又可获得高强度的安全。
 
 
 ## 演示
@@ -43,11 +45,11 @@ scrypt 是一种密码学 Hash 函数，专门用于处理口令。
 
 ## 为何不用 argon2
 
-2015 年 P-H-C 的胜出者 [argon2](https://github.com/P-H-C/phc-winner-argon2)，是目前最新的口令 Hash 函数。OWASP 在 [Password Storage Cheat Sheet](https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet) 中，也推荐开发者首先选择该算法。
+2015 年 P-H-C 胜出者 [argon2](https://github.com/P-H-C/phc-winner-argon2)，是目前最新的口令 Hash 函数。OWASP 在 [Password Storage Cheat Sheet](https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet) 中，也推荐开发者首选该算法。
 
-既然 argon2 这么先进，为什么本项目不选择它？事实上，之前已有人尝试将其 [移植到浏览器](https://github.com/antelle/argon2-browser)，但遇到一个棘手的问题：argon2 大量使用了 64 位整数计算，而 JavaScript 并没有原生的 64 位整数，因此只能通过模拟实现，效率非常低。（asm.js 作为 JS 的子集自然也不支持。另外 Flash 虚拟机 AVM2 同样不支持 64 位整数）
+既然 argon2 比 scrypt 更先进，为什么本项目不使用？事实上，之前已有人尝试将 [argon2 移植到浏览器](https://github.com/antelle/argon2-browser)，但遇到一个棘手的问题：argon2 大量使用了 64 位整数计算，而 JavaScript 并没有原生的 64 位整数，只能通过模拟实现，因此效率非常低。（asm.js 作为 JS 的子集自然也不支持。另外 Flash 虚拟机 AVM2 同样不支持 64 位整数）
 
-所以算法未必就是越新越好，还得考虑实际的运行环境。
+所以算法未必越新越好，还得看实际运行的环境，能否提供充足的支持。
 
 
 ## 探讨
