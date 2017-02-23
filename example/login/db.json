@@ -7,20 +7,20 @@
 	},
 	"alice": {
 		"s_salt": "6ea1361a",
-		"s_hash": "bca3e2b055a0591aeee36e07b8d85bf63186e647c29e1b3f66805f4999ca31fb",
+		"s_hash": "fad8c42aa1aee691b190adde7aabf3e0848665e544d9672f55ca9cc9cae948fe",
 		"pub_info": "这个密码简单吧~ 赏你一点微小的奖励（支付宝口令红包 %s）",
-		"sec_info": "9a0df43b135bce16"
+		"sec_info": "5a6c142b0cdc3c53"
 	},
 	"bob": {
 		"s_salt": "6097685b",
-		"s_hash": "33aee474ec2428145fc819fe88de03c71bbe2f63154524e05e00a7ebcb6a5674",
+		"s_hash": "fff7c5ea82694e6e767631ebeb05ddcc370ec6d0eb5f83d75292478af0e5afb3",
 		"pub_info": "不错，这都被你试出来啦:) 来领取红包 %s",
-		"sec_info": "9eedb0196aa7a7d9"
+		"sec_info": "fd6d3e55598193a1"
 	},
 	"root": {
 		"s_salt": "3e8f4a52",
-		"s_hash": "8f5eaa582a7c7f522ffe541e6a34070bfcde93f563d1542a1061c7d42a3511f0",
+		"s_hash": "442addd9afad5a7ed438705efaf48c7ad9abe2bbac8cc7d09476ec3b5ce618bf",
 		"pub_info": "太厉害了！奖励你个大红包 %s",
-		"sec_info": "da7d045b520e1a7d"
+		"sec_info": "c42aa1c0f1e5cf53"
 	}
 }
