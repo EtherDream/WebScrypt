@@ -2,33 +2,38 @@
 
 一个浏览器版的 scrypt 算法，性能高、体积小。
 
-该脚本适用于网站注册、登录等场合的口令加固。旨在不增加服务端硬件投入的前提下，将拖库后暴力破解口令的难度提升多个数量级。此外，对撞库攻击、隐私嗅探也能起到一定的防护。
-
 
 ## scrypt 简介
 
-scrypt 是一种密码学 Hash 函数，专门用于处理口令。
+[scrypt](https://en.wikipedia.org/wiki/Scrypt) 是一种密码学 Hash 函数，专门用于 Hash 口令。
 
-相比 PBKDF2、bcrypt 只有`时间成本`，scrypt 还可设定`空间成本`，该特征能使 GPU 等硬件设备破解 Hash 时，瓶颈出现在内存上。
+不同于 PBKDF2、bcrypt 只有`时间成本`，scrypt 还可设定`空间成本`，该特征能使 GPU 等硬件设备破解 Hash 时，瓶颈出现在内存上。
 
-另外 scrypt 支持`并发维度`，可充分利用多线程提高工作量，使破解难度成倍增加。
-
-[详细讲解](https://www.cnblogs.com/index-html/p/hardware-resistant-hash-algorithm.html)
+另外 scrypt 支持`并发维度`，可充分利用多线程提高工作量，使破解时间成倍增加。[详细讲解](https://www.cnblogs.com/index-html/p/hardware-resistant-hash-algorithm.html)
 
 
 ## 前端计算
 
-口令 Hash 函数的计算成本，决定了暴力破解的难度。但过高的成本，也会给服务器带来压力。通常只能在性能和安全之间折中。
+口令 Hash 函数的计算成本，决定了暴力破解的难度。但过高的成本，也会给服务器带来压力。因此通常只能在性能和安全之间折中。
 
-如今浏览器的性能有了极大提升，因此可将口令 Hash 在前端计算，用其结果 dk 取代明文口令提交；后端收到 dk 后使用普通快速的 Hash 函数进行处理，即可安全存入数据库中。
+事实上，口令 Hash 完全可在前端计算 —— 账号注册时，提交口令的 Hash 值（通常称之 DK）；登录时，如果提交的 DK 相同，即可证明口令是相同的。
 
-![](../../raw/master/doc/clienthash1.png)
+```javascript
+// REG or LOGIN
+dk = scrypt(password, username, cost ...)
 
-未来即使被拖库，攻击者也是无法通过 hash 值破解 dk 的。口令虽能破解，但需花费很大的成本。
+submit(username, dk, ...)
+```
 
-![](../../raw/master/doc/clienthash2.png)
+前端高成本 Hash 计算，不仅分担了后端压力，还能让原始口令数据更早消失，从而减少泄露环节，例如网络被窃听、服务端恶意程序等。
 
-使用这种方案，既能减轻服务端的计算压力，又可获得高强度的安全。
+这就是本项目的初衷：在不增加网站基础设施的前提下，大幅提升账号口令安全。
+
+
+
+## API
+
+* [使用文档](doc/api.md)
 
 
 ## 演示
@@ -38,23 +43,23 @@ scrypt 是一种密码学 Hash 函数，专门用于处理口令。
 * [登录演示](example/login/)
 
 
-## WebScrypt API
 
-* [使用文档](doc/api.md)
+## 项目对比
 
+| project                                                      | ver    | asm.js | flash | purejs | thread | progress | size (gzip -6)    |
+|:------------------------------------------------------------:|:------:|:------:|:-----:|:------:|:------:|:--------:|------------------:|
+| **WebScrypt**                                                | latest |   ✔    |   ✔   |   ✘    |   ✔    |    ✔️     | 2KB + 10KB / 54KB |
+| [js-scrypt](https://github.com/tonyg/js-scrypt)              | 1.2.0  |   ✔    |   ✘   |   ✘    |   ✘    |    ✘     |             384KB |
+| [scrypt-async-js](https://github.com/dchest/scrypt-async-js) | 1.3.0  |   ✘    |   ✘   |   ✔    |   ✘    |    ✔     |               3KB |
 
-## 为何不用 argon2
-
-2015 年 P-H-C 胜出者 [argon2](https://github.com/P-H-C/phc-winner-argon2)，是目前最新的口令 Hash 函数。OWASP 在 [Password Storage Cheat Sheet](https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet) 中，也推荐开发者首选该算法。
-
-既然 argon2 比 scrypt 更先进，为什么本项目不使用？事实上，之前已有人尝试将 [argon2 移植到浏览器](https://github.com/antelle/argon2-browser)，但遇到一个棘手的问题：argon2 大量使用了 64 位整数计算，而 JavaScript 并没有原生的 64 位整数，只能通过模拟实现，因此效率非常低。（asm.js 作为 JS 的子集自然也不支持。另外 Flash 虚拟机 AVM2 同样不支持 64 位整数）
-
-所以算法未必越新越好，还得看实际运行的环境，能否提供充足的支持。
+> 备注：54KB 的是 `flash.swf` 文件，只有低版本浏览器才会使用
 
 
 ## 探讨
 
 探讨一些前端技术、隐私安全相关的话题。
+
+* [为何不选择 argon2 算法](doc/why-not-argon2/README.md)
 
 * [前端 Hash 能否对抗不安全的通信](doc/client-hash-via-insecure-network/README.md)
 
