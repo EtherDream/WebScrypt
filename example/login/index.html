@@ -7,24 +7,24 @@
 </head>
 
 <body>
-<fieldset>
-  <legend>登录框</legend>
-  <div>
-    账号: <input id="txtUsr" type="text" value="alice">
-  </div>
-  <div>
-    密码: <input id="txtPwd" type="text" value="" maxlength="6">
-  </div>
-  <button id="btnLogin" disabled>登录</button>
-  <div>
-    <div id="progBox">
-      <div id="progBar"></div>
+  <fieldset>
+    <legend>登录框</legend>
+    <div>
+      账号: <input id="txtUsr" type="text" value="alice">
     </div>
-    <div id="txtState"></div>
-  </div>
-  <div id="txtUserInfo"></div>
-</fieldset>
-<pre>
+    <div>
+      密码: <input id="txtPwd" type="text" value="" maxlength="6">
+    </div>
+    <button id="btnLogin" disabled>登录</button>
+    <div>
+      <div id="progBox">
+        <div id="progBar"></div>
+      </div>
+      <div id="txtState"></div>
+    </div>
+    <div id="txtUserInfo"></div>
+  </fieldset>
+  <pre>
 挑战账号：
   alice（密码是 2 位数字）
   bob  （密码是 4 位数字）
@@ -38,16 +38,16 @@
   test/test
 
 后端程序：
-  后端的程序和数据都是公开的，<a href="https://github.com/EtherDream/WebScrypt/tree/master/example/login">点此查看</a>。
-</pre>
+  后端的程序和数据都是公开的，<a href="https://github.com/EtherDream/WebScrypt/tree/master/example/login">点此查看</a>。本站带宽很小，请勿在线撞库。
+  </pre>
 
-<script>
-  if (!window.console) {
-    console = {log: function() {}}
-  }
-</script>
-<script src="//cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
-<script src="../../release/scrypt.js"></script>
-<script src="main.js"></script>
+  <script>
+    if (!window.console) {
+      console = {log: function() {}}
+    }
+  </script>
+  <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+  <script src="../../release/scrypt.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>

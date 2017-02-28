@@ -7,7 +7,7 @@
 
 [scrypt](https://en.wikipedia.org/wiki/Scrypt) 是一种密码学 Hash 函数，专门用于 Hash 口令。
 
-不同于 PBKDF2、bcrypt 只有`时间成本`，scrypt 还可设定`空间成本`，该特征能使 GPU 等硬件设备破解 Hash 时，瓶颈出现在内存上。
+不同于 PBKDF2、bcrypt 只有`时间成本`，scrypt 还可设定`空间成本`，该特征能使 GPU 等硬件设备破解 Hash 时瓶颈出现在内存上，从而降低硬件的计算优势。
 
 另外 scrypt 支持`并发维度`，可充分利用多线程提高工作量，使破解时间成倍增加。[详细讲解](https://www.cnblogs.com/index-html/p/hardware-resistant-hash-algorithm.html)
 
@@ -53,6 +53,16 @@ submit(username, dk, ...)
 | [scrypt-async-js](https://github.com/dchest/scrypt-async-js) | 1.3.0  |   ✘    |   ✘   |   ✔    |   ✘    |    ✔     |               3KB |
 
 > 备注：54KB 的是 `flash.swf` 文件，只有低版本浏览器才会使用
+
+
+### 单线程性能
+
+![](bench/products/bench1.png)
+
+### 多线程性能
+
+![](bench/products/bench2.png)
+
 
 
 ## 探讨
