@@ -43,8 +43,17 @@ submit(username, dk, ...)
 * [登录演示](example/login/)
 
 
+## 如何用到我的项目中？
 
-## 项目对比
+更新中...
+
+
+## 各种浏览器的性能对比
+
+更新中...
+
+
+## 其他的前端 scrypt 库
 
 | project                                                      | ver    | asm.js | flash | purejs | thread | progress | size (gzip -6)    |
 |:------------------------------------------------------------:|:------:|:------:|:-----:|:------:|:------:|:--------:|------------------:|
@@ -57,11 +66,11 @@ submit(username, dk, ...)
 
 ### 单线程性能
 
-![](bench/products/bench1.png)
+<img src="bench/products/bench1.png" width="600">
 
 ### 多线程性能
 
-![](bench/products/bench2.png)
+<img src="bench/products/bench2.png" width="600">
 
 
 
@@ -75,13 +84,4 @@ submit(username, dk, ...)
 
 * [「安全输入框插件」能否有效地保护输入数据](doc/security-plugin-protect-input/README.md)
 
-
-## 更新中
-
-* 细节完善
-
-* 增加 PNaCl、WebAssembly 模块
-
-* 各种浏览器的测试案例、性能对比图表
-
-* 应用案例
+* 更多内容，尽请关注 ...
