@@ -38,7 +38,7 @@ submit(username, dk, ...)
 
 ## 演示
 
-* [基本功能](example/basic/)
+* [基本功能](https://etherdream.github.io/webscrypt/example/basic/)
 
 * [登录演示](example/login/)
 
@@ -72,6 +72,7 @@ submit(username, dk, ...)
 
 <img src="bench/products/bench2.png" width="600">
 
+> 测试环境：Chrome56、OSX 10.11.6、MacBookPro 2013（2 GHz Intel Core i7，8 GB 1600 MHz DDR3）
 
 
 ## 探讨
