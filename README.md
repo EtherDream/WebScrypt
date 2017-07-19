@@ -86,3 +86,8 @@ submit(username, dk, ...)
 * [「安全输入框插件」能否有效地保护输入数据](doc/security-plugin-protect-input/README.md)
 
 * 更多内容，敬请关注 ...
+
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
