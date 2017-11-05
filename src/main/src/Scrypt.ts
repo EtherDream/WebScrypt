@@ -117,6 +117,11 @@ module Scrypt {
         }
         mState = STATE.RUNNING;
 
+			// null check
+        dkLen = dkLen || mMaxDkLen;
+        pass = pass || [];
+        salt = salt || [];
+
         // check length
         if (pass.length > mMaxPassLen) {
             throw Error('pass.length > maxPassLen');
@@ -130,11 +135,11 @@ module Scrypt {
 
         mMod.hash(pass, salt, dkLen);
     }
-    
+
     export function getAvailableMod() {
         if (!mAvailableAPI) {
             mAvailableAPI = [];
-            
+
             for (let k in MOD_MAP) {
                 if (MOD_MAP[k].check()) {
                     mAvailableAPI.push(k);
@@ -143,7 +148,7 @@ module Scrypt {
         }
         return mAvailableAPI;
     }
-    
+
     export function load(mod?: string) {
         if (mState >= STATE.LOADING) {
             return;
@@ -195,12 +200,12 @@ module Scrypt {
         mState = STATE.LOADING;
         mMod.load(mResPath);
     }
-    
+
     export function stop() {
         mMod.stop();
         mState = STATE.READY;
     }
-    
+
     export function free() {
         if (mState == STATE.READY) {
             mMod.free();
@@ -215,7 +220,7 @@ module Scrypt {
         }
         clearTimer();
     }
-    
+
     export function config(param, opt?, test?: boolean) {
         if (!param) {
             throw Error('config() takes at least 1 argument');
@@ -294,11 +299,11 @@ module Scrypt {
 
         mState = STATE.CONFIGING;
     }
-    
+
     export function strToBin(str: string) : Bytes {
         return Util.strToBytes(str);
     }
-    
+
     export function binToStr(bin: Bytes) : string {
         return Util.bytesToStr(bin);
     }
@@ -324,6 +329,6 @@ module Scrypt {
     export function setResTimeout(ms: number) {
         mTimeout = ms;
     }
-    
+
     window['scrypt'] = Scrypt;
 }

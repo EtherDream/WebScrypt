@@ -195,9 +195,6 @@ var ModFlash;
         document.body.appendChild(swf);
         return swf;
     }
-    function toNum(s) {
-        return +s.match(/\d+\.\d+/);
-    }
     var R_VER = /\d+\.\d+/;
     function getPluginVer() {
         var plugins = navigator.plugins;
@@ -228,7 +225,7 @@ var ModFlash;
         catch (err) {
             return;
         }
-        return +ver.match(/\d+\.\d+/);
+        return +ver.match(R_VER);
     }
     function getVer() {
         var v = getPluginVer();
@@ -318,6 +315,10 @@ var Scrypt;
             throw Error('scrypt is running');
         }
         mState = 5 /* RUNNING */;
+        // null check
+        dkLen = dkLen || mMaxDkLen;
+        pass = pass || [];
+        salt = salt || [];
         // check length
         if (pass.length > mMaxPassLen) {
             throw Error('pass.length > maxPassLen');
