@@ -38,7 +38,7 @@ submit(username, dk, ...)
 
 ## 演示
 
-* [基本功能](https://etherdream.github.io/webscrypt/example/basic/)
+* [基本功能](https://etherdream.github.io/WebScrypt/example/basic/)
 
 * [登录演示](example/login/)
 
